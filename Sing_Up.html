@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Inventory - Sign Up</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            background-color: #2c3e50;
+            color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .logo span {
+            color: #e74c3c;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #3498db;
+        }
+
+        .nav-links a.active {
+            color: #3498db;
+            font-weight: 600;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Signup Container */
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 70px);
+            padding: 2rem;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .signup-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .signup-card:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .signup-title {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .signup-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #e74c3c);
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: fadeInUp 0.5s ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 15px;
+            top: 40px;
+            color: #7f8c8d;
+        }
+
+        .password-strength {
+            height: 4px;
+            background-color: #ecf0f1;
+            margin-top: 0.5rem;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .strength-meter {
+            height: 100%;
+            width: 0;
+            background-color: #e74c3c;
+            transition: all 0.3s;
+        }
+
+        .btn-signup {
+            width: 100%;
+            padding: 0.8rem;
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn-signup:hover {
+            background: linear-gradient(135deg, #2980b9, #1a252f);
+            transform: translateY(-2px);
+        }
+
+        .signup-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #7f8c8d;
+        }
+
+        .signup-footer a {
+            color: #3498db;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .signup-footer a:hover {
+            color: #e74c3c;
+        }
+
+        .terms-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .terms-check input {
+            margin-right: 0.5rem;
+        }
+
+        .terms-check label {
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+
+        .terms-check a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: auto;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: #2c3e50;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .signup-card {
+                padding: 1.5rem;
+            }
+
+            .signup-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .signup-container {
+                padding: 1rem;
+            }
+        }
+
+        /* Animation delays for form groups */
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(5) { animation-delay: 0.5s; }
+        .terms-check { animation-delay: 0.6s; }
+        .btn-signup { animation-delay: 0.7s; }
+        .signup-footer { animation-delay: 0.8s; }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Smart<span>Inventory</span></div>
+        <div class="menu-toggle" id="mobile-menu">
+            ☰
+        </div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#features">Features</a></li>
+            <li><a href="index.html#technologies">Technologies</a></li>
+            <li><a href="A.html">Login</a></li>
+            <li><a href="#" class="active">Sign Up</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Signup Container -->
+    <div class="signup-container animate__animated animate__fadeIn">
+        <div class="signup-card">
+            <h2 class="signup-title">Create Your Account</h2>
+            
+            <form id="signupForm">
+                <div class="form-group">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" required>
+                    <i class="fas fa-user input-icon"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    <i class="fas fa-envelope input-icon"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Create a password" required>
+                    <i class="fas fa-lock input-icon"></i>
+                    <div class="password-strength">
+                        <div class="strength-meter" id="strengthMeter"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <input type="password" class="form-control" id="confirm-password" placeholder="Confirm your password" required>
+                    <i class="fas fa-lock input-icon"></i>
+                </div>
+                
+                <div class="form-group">
+                    <label for="company">Company (Optional)</label>
+                    <input type="text" class="form-control" id="company" placeholder="Enter your company name">
+                    <i class="fas fa-building input-icon"></i>
+                </div>
+                
+                <div class="terms-check">
+                    <input type="checkbox" id="terms" required>
+                    <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                </div>
+                
+                <button type="submit" class="btn-signup">Sign Up</button>
+                
+                <div class="signup-footer">
+                    Already have an account? <a href="A.html">Log in here</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p>© 2023 Smart Inventory Management System. All rights reserved.</p>
+        <p>Contact us: info@smartinventory.com</p>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+    <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Password strength indicator
+        document.getElementById('password').addEventListener('input', function() {
+            const password = this.value;
+            const strengthMeter = document.getElementById('strengthMeter');
+            let strength = 0;
+            
+            // Check for length
+            if (password.length >= 8) strength += 1;
+            if (password.length >= 12) strength += 1;
+            
+            // Check for uppercase letters
+            if (/[A-Z]/.test(password)) strength += 1;
+            
+            // Check for numbers
+            if (/[0-9]/.test(password)) strength += 1;
+            
+            // Check for special characters
+            if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+            
+            // Update strength meter
+            let width = 0;
+            let color = '#e74c3c'; // red
+            
+            if (strength <= 1) {
+                width = 25;
+            } else if (strength === 2) {
+                width = 50;
+                color = '#f39c12'; // orange
+            } else if (strength === 3) {
+                width = 75;
+                color = '#f1c40f'; // yellow
+            } else {
+                width = 100;
+                color = '#2ecc71'; // green
+            }
+            
+            strengthMeter.style.width = width + '%';
+            strengthMeter.style.backgroundColor = color;
+        });
+
+        // Form submission
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const fullname = document.getElementById('fullname').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const company = document.getElementById('company').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // Validation
+            if (!fullname || !email || !password || !confirmPassword || !terms) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+            
+            if (password.length < 8) {
+                alert('Password must be at least 8 characters long');
+                return;
+            }
+            
+            // Here you would typically send the data to your server
+            console.log('Signup attempt:', { fullname, email, password, company });
+            
+            // Simulate successful signup
+            setTimeout(() => {
+                // Redirect to dashboard or confirmation page
+                window.location.href = 'dashboard.html';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
