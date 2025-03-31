@@ -1,0 +1,4 @@
+"ingredient_id";"name";"category";"unit";"stock_level";"expiry_date"
+1;"Tomatoes";"Vegetable";"kg";50;"2023-10-15"
+2;"Chicken";"Meat";"kg";30;"2023-10-20"
+3;"Rice";"Grain";"kg";100;"2024-01-01"

@@ -1,0 +1,6 @@
+"ingredient_id";"ingredient_name";"quantity";"expiry_date";"image_url";"status";"cost_per_kg"
+1;"Tomato";80;"2025-07-15";"updated_url_to_image";"near expiry";0.0
+2;"Potato";90;"2025-04-02";"updated_url_to_image";"near expiry";0.0
+3;"Ladyfinger";30;"2025-04-03";"updated_url_to_image";"fresh";0.0
+4;"Cucumber";35;"2025-04-05";"updated_url_to_image";"fresh";0.0
+5;"Mango";35;"2025-04-10";"updated_url_to_image";"fresh";0.0
